@@ -1,0 +1,24 @@
+From: JURIX 2018 <noreply@ai.rug.nl>
+To: Elina Sietsema <e.sietsema@rug.nl>
+Subject: Aanmelding JURIX 2018: $first_name $last_name
+
+<html>
+<body style="font-family:sans-serif">
+<p>Hoi Elina, $first_name $last_name heeft zich aangemeld voor JURIX:</p>
+
+<table>
+	<tr><th style="text-align:left">Voornaam</th><td>$first_name|htmlentities</td></tr>
+	<tr><th style="text-align:left">Achternaam</th><td>$last_name|htmlentities</td></tr>
+	<tr><th style="text-align:left">E-mail</th><td>$email|htmlentities</td></tr>
+	<tr><th style="text-align:left">Adres 1</th><td>$address1|htmlentities</td></tr>
+	<tr><th style="text-align:left">Adres 2</th><td>$address2|htmlentities</td></tr>
+	<tr><th style="text-align:left">Plaats</th><td>$city|htmlentities</td></tr>
+	<tr><th style="text-align:left">Land</th><td>$country|htmlentities</td></tr>
+	<tr><th style="text-align:left">Type</th><td>$register_as|htmlentities</td></tr>
+	<tr><th style="text-align:left">Verbonden aan</th><td>$affiliation|htmlentities</td></tr>
+	<tr><th style="text-align:left">Mee naar Diner</th><td>$dinner|_if('Ja','Nee')</td></tr>
+	<tr><th style="text-align:left">Mee naar Martinitoren</th><td>$martinitoren|_if('Ja','Nee')</td></tr>
+</table>
+
+</body>
+</html>
