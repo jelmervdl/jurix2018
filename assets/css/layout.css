@@ -2,7 +2,7 @@ html, body {
 	margin: 0;
 	height: 100%;
 	font: 18px/24px sans-serif;
-	background: #333;
+	background: #ffc293;
 	display: flex;
 	flex-direction: column;
 }
@@ -34,7 +34,7 @@ html, body {
 .website-header {
 	min-height: 100vh;
 	position: relative;
-	background:  url(../img/bnaic-1.jpg) center no-repeat;
+	background:  url(../img/groningen-by-night-free-license-cc0.jpg) center no-repeat;
 	background-size: cover;
 	/*background-attachment: fixed;*/
 	font-size: 1.25em;
@@ -53,8 +53,6 @@ html, body {
 
 .website-header .text {
 	flex: 0 0 auto;
-	padding: 90px 20px 20px 20px;
-	background: rgba(15, 127, 18, 0.6);
 	color: white;
 }
 
@@ -63,7 +61,7 @@ html, body {
 }
 
 .website-header h1 {
-	background: url(../img/bnaic-logo.svg) center no-repeat;
+	background: url(../img/jurix.svg) center no-repeat;
 	overflow: hidden;
 	background-size: contain;
 	width: 100%;
@@ -170,7 +168,7 @@ html, body {
 }
 
 .website-navigation li:hover > ul > li:hover {
-	background: rgba(15, 127, 18, 1.0);
+	background: #ffc293;
 	color: white;
 }
 
@@ -212,12 +210,12 @@ html, body {
 
 .website-navigation.fixed li:hover,
 .website-navigation.fixed li.active:hover {
-	background: rgba(15, 127, 18, 1.0);
+	background: #ffc293;
 	color: white;
 }
 
 .website-navigation.fixed li.active {
-	color: rgba(15, 127, 18, 1.0);
+	color: #ffc293;
 }
 
 .website-navigation.fixed li ul {
@@ -225,7 +223,7 @@ html, body {
 }
 
 .website-navigation.fixed li ul li {
-	background: rgba(15, 127, 18, 1.0);
+	background: #ffc293;
 	color: white;
 }
 
@@ -252,7 +250,7 @@ html, body {
 
 	.website-navigation.fixed,
 	.website-navigation:focus {
-		background: rgba(15, 127, 18, 1.0) url(../img/bnaic-logo-white-simple.svg) center 0.5em no-repeat;
+		background: #ffc293 url(../img/jurix.svg) center 0.5em no-repeat;
 		background-size: auto 1.5em;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	}
@@ -262,7 +260,7 @@ html, body {
 		display: block;
 		box-shadow: none;
 		text-indent: 0.75em;
-		background:rgba(15, 127, 18, 1.0); 
+		background:#ffc293; 
 	}
 
 	.website-navigation li ul li {
@@ -295,7 +293,7 @@ html, body {
 	.website-navigation li.active:hover > ul > li:hover,
 	.website-navigation.fixed li:hover > ul > li:hover,
 	.website-navigation.fixed li.active:hover > ul > li:hover {
-		color: rgba(15, 127, 18, 1.0);
+		color: #ffc293;
 		background: white;
 	}
 
@@ -335,7 +333,7 @@ html, body {
 	}
 
 	.website-navigation:focus {
-		background-color: rgba(15, 127, 18, 1.0);
+		background-color: #ffc293;
 	}
 
 	.website-navigation:focus .container {
