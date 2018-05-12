@@ -34,7 +34,7 @@ html, body {
 .website-header {
 	min-height: 100vh;
 	position: relative;
-	background:  url(../img/groningen-by-night-free-license-cc0.jpg) center no-repeat;
+	background:  url(../img/groningen-by-night.jpg) center no-repeat;
 	background-size: cover;
 	/*background-attachment: fixed;*/
 	font-size: 1.25em;
