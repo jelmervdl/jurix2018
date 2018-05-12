@@ -99,7 +99,7 @@ if ($registration_form->submitted() && count($errors) == 0) {
 					</ul>
 				</li>
 				<li class="active"><a href="registration.php">Registration</a></li>
-				<li><a href="cfp.html">Call for papers</a></li>
+				<li><a href="cfp.html">Calls</a></li>
 				<li><a href="committees.html">Committees</a></li>
 				<li><a href="practicalities.html">Practicalities</a></li>
 			</ul>
