@@ -441,5 +441,25 @@
 				<p>Contact: <a href="mailto:Elina Sietsema &lt;e.sietsema@rug.nl&gt;">Elina Sietsema (e.sietsema@rug.nl)</a></p>
 			</div>
 		</footer>
+
+		<script src="assets/js/main.js"></script>
+		<script>
+			$('.table-of-contents', function(toc) {
+				var filler = $h('div', {className: 'toc-shadow-filler'}, []);
+				filler.style.height = toc.offsetHeight + 'px';
+
+				var shadow = $h('div', {className: 'toc-shadow'}, [filler]);
+				toc.parentElement.insertBefore(shadow, toc.nextElementSibling);
+				
+				var sticky = false;
+				window.addEventListener('scroll', function(e) {
+					var offscreen = window.scrollY > shadow.offsetTop + shadow.offsetHeight;
+					if (sticky !== offscreen) {
+						toc.classList[offscreen ? 'add' : 'remove']('sticky');
+						sticky = offscreen;
+					}
+				}, {passive: true});
+			});
+		</script>
 	</body>
 </html>

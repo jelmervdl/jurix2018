@@ -404,6 +404,22 @@ html, body {
 	margin: 0;
 }
 
+.website-content h5 {
+	float: left;
+	margin: 0 1ch 0 0;
+	font: inherit;
+	font-weight: bold;
+}
+
+.website-content .important-dates {
+	margin: 0 -0.25em;
+}
+
+.website-content .important-dates td {
+	margin: 0;
+	padding: 0 0.25em;
+}
+
 .website-content > .container > section {
 	margin-bottom: 3em;
 	padding-bottom: 2em;
@@ -564,6 +580,7 @@ footer a {
 
 .hotels {
 	border-spacing: 0;
+	width: 100%;
 }
 
 .hotels tr,
@@ -887,6 +904,15 @@ section.talk .speaker {
 	background: hsl(60, 100%, 80%);
 }
 
+.table-of-contents,
+.table-of-contents + .toc-shadow {
+	margin: 1em 0;
+}
+
+.table-of-contents + .toc-shadow .toc-shadow-filler {
+	display: none;
+}
+
 /* Jump-list at the top of the accepted papers section */
 @media (min-width: 700px) {
 	.table-of-contents {
@@ -899,6 +925,21 @@ section.talk .speaker {
 	.table-of-contents li {
 		flex: 1 1 auto;
 		line-height: 2em;
+	}
+}
+
+@media (min-width: 1200px) {
+	.table-of-contents.sticky {
+		position: fixed;
+		flex-direction: column;
+		left: 40px;
+		top: 40px;
+		max-width: calc((100vw - 1000px) / 2);
+		font-size: 0.8em;
+	}
+
+	.table-of-contents.sticky + .toc-shadow .toc-shadow-filler {
+		display: block;
 	}
 }
 
