@@ -29,6 +29,12 @@ html, body {
 	margin: 0 auto;
 }
 
+@media (min-width: 900px) {
+	.container {
+		width: 900px; /* Same as above, but for IE 11*/
+	}
+}
+
 /* Header */
 
 .website-header {
