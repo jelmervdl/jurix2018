@@ -17,7 +17,6 @@ Subject: Aanmelding JURIX 2018: $first_name $last_name
 	<tr><th style="text-align:left">Type</th><td>$register_as|htmlentities</td></tr>
 	<tr><th style="text-align:left">Verbonden aan</th><td>$affiliation|htmlentities</td></tr>
 	<tr><th style="text-align:left">Mee naar Diner</th><td>$dinner|_if('Ja','Nee')</td></tr>
-	<tr><th style="text-align:left">Mee naar Martinitoren</th><td>$martinitoren|_if('Ja','Nee')</td></tr>
 </table>
 
 </body>

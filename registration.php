@@ -1,6 +1,8 @@
 <?php
 
-exit; // Registrations are not open yet
+// Registrations are not open yet
+if (empty($_GET['override']))
+	exit;
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);
@@ -13,7 +15,7 @@ require_once 'src/rates.php'; // includes $rates and $late
 $options = array();
 
 foreach ($rates as $name => $rate)
-	$options[$name] = sprintf('%s (&euro;&nbsp;%d)', $rate['label'], $rate['price']);
+	$options[$name] = sprintf('%s (&euro;&nbsp;%d)', $rate['label'], $rate['price'][$price_category]);
 
 $registration_form = new Form();
 $registration_form->add(new FormTextField('first_name', 'First name', array('required' => true)));
@@ -25,15 +27,19 @@ $registration_form->add(new FormTextField('city', 'Town/City/Region', array('req
 $registration_form->add(new FormTextField('country', 'Country', array('required' => true)));
 $registration_form->add(new FormRadioField('register_as', 'Registering as', $options, array('required' => true)));
 $registration_form->add(new FormTextField('affiliation', 'Affiliation'));
-$registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d; Wednesday November 8)', $dinner_rate)));
 $registration_form->add(new FormCheckboxField('martinitoren', 'I want to join the trip to the Martinitoren (Wednesday November 8)'));
+$registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d; Wednesday November 8)', $dinner_rate[$price_category])));
 
 $errors = $registration_form->submitted() ? $registration_form->validate() : array();
 
 if ($registration_form->submitted() && count($errors) == 0) {
 	// Combine all the data (and calculate the total amount due)
 	$data = $registration_form->data();
-	$data['total'] = $rates[$data['register_as']]['price'] + (!empty($data['dinner']) ? $dinner_rate : 0);
+	$data['total'] = $rates[$data['register_as']]['price'][$price_category];
+
+	// Add the dinner to that if people opted in
+	if (!empty($data['dinner']))
+		$data['total'] += $dinner_rate[$price_category];
 
 	// First, add the info to a CSV file here on the server
 	$csv = new CSVFile('../data/signups-jurix.txt');
@@ -123,21 +129,13 @@ if ($registration_form->submitted() && count($errors) == 0) {
 							</tr>
 						</thead>
 						<tbody>
+							<?php foreach ($rates as $rate_category): ?>
 							<tr>
-								<th>Bachelor or Master <span class="hide-on-overflow">student</span></th>
-								<td class="early">&euro;&nbsp;50</td>
-								<td class="regular">&euro;&nbsp;50</td>
+								<th><?=$rate_category['label']?></th>
+								<td class="early">&euro;&nbsp;<?=$rate_category['price']['early']?></td>
+								<td class="regular">&euro;&nbsp;<?=$rate_category['price']['late']?></td>
 							</tr>
-							<tr>
-								<th>PhD student</th>
-								<td class="early">&euro;&nbsp;110</td>
-								<td class="regular">&euro;&nbsp;130</td>
-							</tr>
-							<tr>
-								<th>Regular</th>
-								<td class="early">&euro;&nbsp;160</td>
-								<td class="regular">&euro;&nbsp;180</td>
-							</tr>
+							<?php endforeach ?>
 						</tbody>
 					</table>
 				</section>

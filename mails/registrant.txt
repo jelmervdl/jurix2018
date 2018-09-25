@@ -5,11 +5,11 @@ Subject: Registration JURIX 2018
 <html>
 <body style="font-family:sans-serif">
 <p>Dear $first_name,</p>
-<p>This mail confirms that you have just registered for attending the JURIX 2018 conference on November 8 and 9 in Groningen. Below follows a copy of your registration information.</p>
+<p>This mail confirms that you have just registered for attending the JURIX 2018 conference on December 12 to 14 in Groningen. Below follows a copy of your registration information.</p>
 
 <p>Please pay as soon as possible (payment details below). Don't forget to mention both the project code 190 193 412 and JURIX 2018 when making your payment.</p>
 
-<p>Practical information about your conference visit is available at our <a href="http://bnaic2017.ai.rug.nl/practicalities.html">practicalities page</a>.</p>
+<p>Practical information about your conference visit is available at our <a href="http://jurix2018.ai.rug.nl/practicalities.html">practicalities page</a>.</p>
 
 <h2>Registration info</h2>
 <table>
@@ -62,7 +62,7 @@ Subject: Registration JURIX 2018
 
 <p>Please don't forget to mention both the project code <em>190 193 412</em> and <em>JURIX 2018</em> in your description.</p>
 
-<p>We look forward to seeing you on November 8 and 9 in Het Kasteel, Melkweg 1, 9718 EP Groningen.</p>
+<p>We look forward to seeing you on December 12 to 14 in Het Kasteel, Melkweg 1, 9718 EP Groningen.</p>
 
 <p>Best wishes,</p>
 
