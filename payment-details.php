@@ -112,7 +112,8 @@ $total = $rate['price'] + ($dinner ? $dinner_rate : 0);
 
 		<footer>
 			<div class="container">
-				<p>Contact: <a href="mailto:Elina Sietsema &lt;e.sietsema@rug.nl&gt;">Elina Sietsema (e.sietsema@rug.nl)</a></p>
+				<p>Program chair: <a href="mailto:Monica Palmirani &lt;monica.palmirani@unibo.it&gt;">Monica Palmirani</a><br>
+				Contact organisation: <a href="mailto:Sarah van Wouwe &lt;s.k.van.wouwe@rug.nl&gt;">Sarah van Wouwe</a></p>
 			</div>
 		</footer>
 	</body>
