@@ -1,10 +1,10 @@
 From: JURIX 2018 <noreply@ai.rug.nl>
-To: Elina Sietsema <e.sietsema@rug.nl>
+To: Sarah van Wouwe <s.k.van.wouwe@rug.nl>
 Subject: Aanmelding JURIX 2018: $first_name $last_name
 
 <html>
 <body style="font-family:sans-serif">
-<p>Hoi Elina, $first_name $last_name heeft zich aangemeld voor JURIX:</p>
+<p>Hoi Sarah, $first_name $last_name heeft zich aangemeld voor JURIX 2018:</p>
 
 <table>
 	<tr><th style="text-align:left">Voornaam</th><td>$first_name|htmlentities</td></tr>
