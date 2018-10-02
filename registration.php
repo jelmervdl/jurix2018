@@ -1,9 +1,5 @@
 <?php
 
-// Registrations are not open yet
-if (empty($_GET['override']))
-	exit;
-
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
@@ -94,17 +90,7 @@ if ($registration_form->submitted() && count($errors) == 0) {
 		<nav class="website-navigation fixed" tabindex="-1">
 			<ul class="container">
 				<li><a href="index.html#home">Home</a></li>
-				<li>
-					<a href="program.html">Program</a>
-					<ul>
-						<li><a href="program.html#schedule">Schedule</a></li>
-						<li><a href="program.html#keynote-speakers">Keynote speakers</a></li>
-						<li><a href="program.html#fact-talks">FACt talks</a></li>
-						<li><a href="program.html#accepted-papers">Accepted papers and demonstrations</a></li>
-						<li><a href="program.html#author-index">Author index</a></li>
-						<li><a href="program.html#nvidia-deep-learning-workshop">NVIDIA Deep Learning Workshop</a></li>
-					</ul>
-				</li>
+				<li><a href="program.html">Program</a></li>
 				<li class="active"><a href="registration.php">Registration</a></li>
 				<li><a href="cfp.html">Calls</a></li>
 				<li><a href="committees.html">Committees</a></li>
