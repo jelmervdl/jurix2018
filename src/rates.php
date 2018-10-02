@@ -1,6 +1,6 @@
 <?php
 
-$late = time() > mktime(0, 0, 0, 10, 28);
+$late = time() > mktime(0, 0, 0, 12, 2);
 
 $price_category = $late ? 'late' : 'early';
 
@@ -43,6 +43,6 @@ $rates = array(
 );
 
 $dinner_rate = array(
-	'early' => 60,
-	'late' => 80
+	'early' => 50,
+	'late' => 50
 );

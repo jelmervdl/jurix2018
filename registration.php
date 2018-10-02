@@ -116,7 +116,7 @@ if ($registration_form->submitted() && count($errors) == 0) {
 			<div class="container">
 				<section>
 					<h1>Registration</h1>
-					<p>Please complete the form below to register for the conference. Note that early registration rates apply until Friday October 27 (the day after the final paper submission deadline).</p> 
+					<p>Please complete the form below to register for the conference. Note that early registration rates apply until Monday December 3.</p> 
 					
 					<h3>Rates</h3>
 					<table class="rates">
