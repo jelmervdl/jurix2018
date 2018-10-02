@@ -61,11 +61,15 @@ Subject: Registration JURIX 2018
 
 <p>Please don't forget to mention both the project code <em>190 193 412</em> and <em>JURIX 2018</em> in your description.</p>
 
+<p>For questions about the conference organisation, please contact <a href="mailto:Sarah van Wouwe &lt;s.k.van.wouwe@rug.nl&gt;">Sarah van Wouwe</a>.</p>
+
+<p>For questions about the conference program, please contact <a href="mailto:Monica Palmirani &lt;monica.palmirani@unibo.it&gt;">Monica Palmirani</a>.</p>
+
 <p>We look forward to seeing you on December 12 to 14 in Het Kasteel, Melkweg 1, 9718 EP Groningen.</p>
 
 <p>Best wishes,</p>
 
-<p>Bart Verheij<br />Marco Wiering<br />Conference chairs</p>
+<p>Monica Palmirani, Jeanne Mifsud Bonnici, Henry Prakken, and Bart Verheij</p>
 
 </body>
 </html>
