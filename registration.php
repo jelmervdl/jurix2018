@@ -27,8 +27,7 @@ $registration_form->add(new FormTextField('city', 'Town/City/Region', array('req
 $registration_form->add(new FormTextField('country', 'Country', array('required' => true)));
 $registration_form->add(new FormRadioField('register_as', 'Registering as', $options, array('required' => true)));
 $registration_form->add(new FormTextField('affiliation', 'Affiliation'));
-$registration_form->add(new FormCheckboxField('martinitoren', 'I want to join the trip to the Martinitoren (Wednesday November 8)'));
-$registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d; Wednesday November 8)', $dinner_rate[$price_category])));
+$registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d)', $dinner_rate[$price_category])));
 
 $errors = $registration_form->submitted() ? $registration_form->validate() : array();
 
@@ -165,7 +164,6 @@ if ($registration_form->submitted() && count($errors) == 0) {
 
 						<div class="form-grouping">
 						<?= $registration_form->dinner->render($errors) ?>
-						<?= $registration_form->martinitoren->render($errors) ?>
 						</div>
 	
 						<div class="form-controls">
