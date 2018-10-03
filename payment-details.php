@@ -11,7 +11,7 @@ $dinner = !empty($_GET['dinner']);
 
 $rate = $rates[$_GET['rate']];
 
-$total = $rate['price'] + ($dinner ? $dinner_rate : 0);
+$total = $rate['price'][$price_category] + ($dinner ? $dinner_rate[$price_category] : 0);
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +61,7 @@ $total = $rate['price'] + ($dinner ? $dinner_rate : 0);
 					<p>
 						You have registered as a <?= htmlentities($rate['label']) ?>.
 						<?php if ($dinner): ?>You've also opted to join the dinner.<?php endif ?>
-						Would you be so kind to transfer € <?=$total?><?php if ($dinner): ?> (&euro;&nbsp;<?=$rate['price']?> <?=$rate['label']?> rate, &euro;&nbsp;<?=$dinner_rate?> dinner)<?php endif ?> to the following account as soon as possible?
+						Would you be so kind to transfer € <?=$total?><?php if ($dinner): ?> (&euro;&nbsp;<?=$rate['price'][$price_category]?> <?=$rate['label']?> rate, &euro;&nbsp;<?=$dinner_rate?> dinner)<?php endif ?> to the following account as soon as possible?
 					</p>
 
 					<dl class="payment-details">
