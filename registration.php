@@ -147,6 +147,9 @@ if ($registration_form->submitted() && count($errors) == 0) {
 						</div>
 						<div class="form-grouping">
 						<?= $registration_form->affiliation->render($errors) ?>
+						</div>
+						
+						<div class="form-grouping">
 						<?= $registration_form->siks->render($errors) ?>
 						</div>
 
