@@ -22,6 +22,7 @@ Subject: Registration JURIX 2018
 	<tr><th style="text-align:left">Country</th><td>$country|htmlentities</td></tr>
 	<tr><th style="text-align:left">Attending as</th><td>$register_as|htmlentities</td></tr>
 	<tr><th style="text-align:left">Affiliation</th><td>$affiliation|htmlentities</td></tr>
+	<tr><th style="text-align:left">PhD with SIKS</th><td>$siks|_if('Yes', 'No')</td></tr>
 	<tr><th style="text-align:left">Dinner</th><td>$dinner|_if('Attending', 'No')</td></tr>
 </table>
 
