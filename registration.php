@@ -24,7 +24,7 @@ $registration_form->add(new FormTextField('country', 'Country', array('required'
 $registration_form->add(new FormRadioField('register_as', 'Registering as', $options, array('required' => true)));
 $registration_form->add(new FormTextField('affiliation', 'Affiliation'));
 $registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d)', $dinner_rate[$price_category])));
-$registration_form->add(new FormCheckboxField('siks', 'I am a PhD student in the <a href="http://www.siks.nl/">SIKS research school</a>'));
+$registration_form->add(new FormCheckboxField('siks', 'I am a PhD student in the <a href="http://www.siks.nl/" target="_blank">SIKS research school</a>'));
 
 $errors = $registration_form->submitted() ? $registration_form->validate() : array();
 
