@@ -43,6 +43,6 @@ $rates = array(
 );
 
 $dinner_rate = array(
-	'early' => 50,
-	'late' => 50
+	'early' => 60,
+	'late' => 60
 );
