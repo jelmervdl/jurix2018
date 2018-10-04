@@ -6,7 +6,7 @@ $price_category = $late ? 'late' : 'early';
 
 $rates = array(
 	'student' => array(
-		'label' => 'Bachelor or Master student',
+		'label' => 'Bachelor, Master or PhD student',
 		'price' => array(
 			'early' => 100,
 			'late' => 150
