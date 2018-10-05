@@ -502,12 +502,14 @@ footer a {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
 	display: block;
 	font: inherit;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
 	box-sizing: border-box;
 	width: 100%;
 }
@@ -524,6 +526,10 @@ footer a {
 	color: white;
 }
 
+.form-group + .explanation {
+	margin-top: 0;
+}
+
 .form-controls {
 	margin-top: 1em;
 }
@@ -537,15 +543,18 @@ footer a {
 
 @media (min-width: 700px) {
 	/* Labels fit next to the field here */
-	.form-group label:not(.option) {
+	.form-group:not(.label-inside) label:not(.option) {
 		display: inline-block;
 		width: 200px;
+		vertical-align: top;
 		text-align: right;
 		padding-right: 1em;
+		line-height: 1.8em;
 	}
 
 	.form-group input,
-	.form-group select {
+	.form-group select,
+	.form-group textarea {
 		display: inline-block;
 	}
 
@@ -554,11 +563,13 @@ footer a {
 		vertical-align: top;
 	}
 
-	.form-group.checkbox {
+	.form-group.checkbox,
+	.form-group + .explanation {
 		margin-left: 200px;	
 	}
 
-	.form-group input:not([type=radio]):not([type=checkbox]) {
+	.form-group input:not([type=radio]):not([type=checkbox]),
+	.form-group textarea {
 		width: 500px;
 	}
 

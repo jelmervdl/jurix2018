@@ -69,7 +69,7 @@ abstract class FormField
 
 	public function validate()
 	{
-		if (!empty($this->attributes['required']) && $this->value() == '')
+		if (!empty($this->attributes['required']) && trim($this->value()) == '')
 			return 'This field should not be left empty';
 
 		return null;
@@ -108,6 +108,18 @@ abstract class FormField
 	}
 }
 
+class FormTextArea extends FormField 
+{	
+	public function render(array &$errors = null)
+	{
+		$field = sprintf('<textarea %s>%s</textarea>',
+			$this->render_attributes($this->attributes),
+			htmlspecialchars($this->value()));
+
+		return $this->render_group($field, $errors[$this->name]);
+	}
+}
+
 class FormTextField extends FormField 
 {	
 	protected $default_attributes = array(
@@ -135,8 +147,23 @@ class FormEmailField extends FormTextField
 
 	public function validate()
 	{
-		if (filter_var($this->value(), FILTER_VALIDATE_EMAIL) === false)
-			return 'This email address does not seem to be valid';
+		if ($this->value() !== null && filter_var($this->value(), FILTER_VALIDATE_EMAIL) === false)
+			return 'This email address does not seem valid';
+
+		return parent::validate();
+	}
+}
+
+class FormNumberField extends FormTextField
+{
+	protected $default_attributes = array(
+		'type' => 'number'
+	);
+
+	public function validate()
+	{
+		if ($this->value() !== null && filter_var($this->value(), FILTER_VALIDATE_INT) === false)
+			return 'This value has to be a rounded number';
 
 		return parent::validate();
 	}

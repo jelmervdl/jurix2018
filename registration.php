@@ -23,7 +23,9 @@ $registration_form->add(new FormTextField('city', 'Town/City/Region', array('req
 $registration_form->add(new FormTextField('country', 'Country', array('required' => true)));
 $registration_form->add(new FormRadioField('register_as', 'Registering as', $options, array('required' => true)));
 $registration_form->add(new FormTextField('affiliation', 'Affiliation'));
-$registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d)', $dinner_rate[$price_category])));
+$registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d each)', $dinner_rate[$price_category])));
+$registration_form->add(new FormNumberField('dinner_seats', 'Seats', array('value' => '1', 'min' => '1')));
+$registration_form->add(new FormTextArea('dinner_wishes', 'Dietary wishes'));
 $registration_form->add(new FormCheckboxField('siks', 'I am a PhD student in the <a href="http://www.siks.nl/" target="_blank">SIKS research school</a>'));
 
 $errors = $registration_form->submitted() ? $registration_form->validate() : array();
@@ -35,11 +37,14 @@ if ($registration_form->submitted() && count($errors) == 0) {
 
 	// Add the dinner to that if people opted in
 	if (!empty($data['dinner']))
-		$data['total'] += $dinner_rate[$price_category];
+		$data['total'] += intval($data['dinner_seats']) * $dinner_rate[$price_category];
 
 	// First, add the info to a CSV file here on the server
 	$csv = new CSVFile('../data/signups-jurix.txt');
 	$csv->add($data);
+
+	// Add the price breakdown for the emails
+	$data['price_breakdown'] = html_price_breakdown($data['register_as'], $data['dinner'] ? $data['dinner_seats'] : 0);
 
 	try {
 		// Then, make sure Elina receives a mail about it
@@ -61,7 +66,7 @@ if ($registration_form->submitted() && count($errors) == 0) {
 	// Finally, show the payment instructions
 	$link = sprintf('payment-details.php?rate=%s&dinner=%s',
 		rawurlencode($registration_form->register_as->value()),
-		rawurlencode($registration_form->dinner->value()));
+		rawurlencode($registration_form->dinner->value() ? $registration_form->dinner_seats->value() : 0));
 	header('Location: ' . $link);
 	echo 'Registration succeeded. Redirecting you to <a href="' . htmlentities($link) .'">the payment details page</a>.';
 	exit;
@@ -124,6 +129,10 @@ if ($registration_form->submitted() && count($errors) == 0) {
 							<?php endforeach ?>
 						</tbody>
 					</table>
+
+					<p>Lunches, coffee breaks and welcome reception (Wednesday) are included in the fees.</p>
+					<p>Full conference registration fee includes all events: main conference, workshops, hackathon and doctoral consortium.</p>
+					<p>Workshops, hackathon and doctoral consortium only fee includes Wednesday events only and does not give access to the main conference on Thursday and Friday.</p>
 				</section>
 				<section>
 					<form method="post" action="registration.php">
@@ -156,11 +165,56 @@ if ($registration_form->submitted() && count($errors) == 0) {
 						<div class="form-grouping">
 						<?= $registration_form->dinner->render($errors) ?>
 						</div>
+
+						<div class="form-grouping" data-toggle-with="#field-dinner">
+						<?= $registration_form->dinner_seats->render($errors) ?>
+						<p class="explanation">Number of seats to reserve for the dinner</p>
+						<?= $registration_form->dinner_wishes->render($errors) ?>
+						</div>
 	
 						<div class="form-controls">
 							<button type="submit">Submit registration</button>
 						</div>
 					</form>
+				</section>
+
+				<section>
+					<h3>Payment</h3>
+					<p>Please pay as soon as possible. Don't forget to mention both the project code 190 193 412 and JURIX 2018 when making your payment.</p>
+
+					<p>Note: we will also send you this information in your confirmation email.</p>
+
+					<dl class="payment-details">
+						<dt>Addressee</dt>
+						<dd>
+							Rijksuniversiteit Groningen<br>
+							Fac. Wiskunde en Natuurwetenschappen<br>
+							Nijenborg 4<br>
+							9747 AG  Groningen 
+						</dd>
+
+						<dt>Bank</dt>
+						<dd>
+							ABN-AMRO<br>
+							Zuiderzeelaan 53<br>
+							Postbus 686<br>
+							8000 AR Zwolle
+						</dd>
+							
+						<dt>IBAN</dt>
+						<dd>NL45ABNA0474567206</dd>
+				
+						<dt>BIC</dt>
+						<dd>ABN ANL 2A</dd>
+						
+						<dt>Description</dt>
+						<dd>
+							Project code 190 193 412<br>
+							JURIX 2018
+						</dd>
+					</dl>
+
+					<p>Please don't forget to mention both the project code <em>190 193 412</em> and <em>JURIX 2018</em> in your description.</p>
 				</section>
 			</div>
 		</div>
@@ -171,5 +225,20 @@ if ($registration_form->submitted() && count($errors) == 0) {
 				Contact organisation: <a href="mailto:Sarah van Wouwe &lt;s.k.van.wouwe@rug.nl&gt;">Sarah van Wouwe</a></p>
 			</div>
 		</footer>
+	
+		<script src="assets/js/main.js"></script>
+		<script>
+			$('*[data-toggle-with]', function(container) {
+				var toggle = document.querySelector(container.dataset.toggleWith);
+
+				var update = function() {
+					container.style.display = toggle.checked ? '' : 'none';
+				};
+
+				toggle.addEventListener('change', update);
+
+				update();
+			});
+		</script>
 	</body>
 </html>

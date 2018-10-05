@@ -7,7 +7,13 @@ require_once 'src/class.smtp.php';
 
 function get_mailer()
 {
-	$auth = require '../data/smtp.php';
+	if (!is_readable('../data/smtp.php'))
+		throw new RuntimeException('File with SMTP settings is not accessible');
+
+	$auth = include '../data/smtp.php';
+
+	if (!$auth)
+		throw new RuntimeException('Could not load the SMTP settings from the file');
 	
 	$mailer = new PHPMailer(true);
 

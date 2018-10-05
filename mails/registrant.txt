@@ -24,6 +24,10 @@ Subject: Registration JURIX 2018
 	<tr><th style="text-align:left">Affiliation</th><td>$affiliation|htmlentities</td></tr>
 	<tr><th style="text-align:left">PhD with SIKS</th><td>$siks|_if('Yes', 'No')</td></tr>
 	<tr><th style="text-align:left">Dinner</th><td>$dinner|_if('Attending', 'No')</td></tr>
+	{% if $dinner %}
+	<tr><th style="text-align:left">Seats at dinner</th><td>$dinner_seats</td></tr>
+	<tr><th style="text-align:left">Dietary wishes</th><td>$dinner_wishes|htmlentities</td></tr>
+	{% endif %}
 </table>
 
 <h2>Payment details</h2>
@@ -57,7 +61,7 @@ Subject: Registration JURIX 2018
 	</dd>
 
 	<dt style="font-weight: bold">Amount</dt>
-	<dd>€ $total</dd>
+	<dd>€ $total ($price_breakdown)</dd>
 </dl>
 
 <p>Please don't forget to mention both the project code <em>190 193 412</em> and <em>JURIX 2018</em> in your description.</p>

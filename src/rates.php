@@ -46,3 +46,15 @@ $dinner_rate = array(
 	'early' => 60,
 	'late' => 60
 );
+
+function html_price_breakdown($rate, $dinner)
+{
+	global $rates, $dinner_rate, $price_category;
+	
+	return sprintf('&euro;&nbsp;%d %s rate%s',
+		$rates[$rate]['price'][$price_category],
+		$rates[$rate]['label'],
+		$dinner > 0
+			? sprintf(', %d &times; &euro;&nbsp;%d dinner', $dinner, $dinner_rate[$price_category])
+			: '');
+}
