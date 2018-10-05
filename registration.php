@@ -27,6 +27,7 @@ $registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join 
 $registration_form->add(new FormNumberField('dinner_seats', 'Seats', array('value' => '1', 'min' => '1')));
 $registration_form->add(new FormTextArea('dinner_wishes', 'Dietary restrictions'));
 $registration_form->add(new FormCheckboxField('siks', 'I am a PhD student in the <a href="http://www.siks.nl/" target="_blank">SIKS research school</a>'));
+$registration_form->add(new FormCheckboxField('gdpr', 'I consent that the JURIX 2018 conference organisation records the above provided information for the purpose and duration of the conference organisation.', array('required' => true)));
 
 $errors = $registration_form->submitted() ? $registration_form->validate() : array();
 
@@ -35,9 +36,15 @@ if ($registration_form->submitted() && count($errors) == 0) {
 	$data = $registration_form->data();
 	$data['total'] = $rates[$data['register_as']]['price'][$price_category];
 
+	// Don't track GDPR consent (it is mandatory for submitting the form anyway)
+	unset($data['gdpr']);
+
+	// If you don't want to come to the dinner, then you don't need any seats! Eh!
+	if (empty($data['dinner']))
+		$data['dinner_seats'] = 0;
+	
 	// Add the dinner to that if people opted in
-	if (!empty($data['dinner']))
-		$data['total'] += intval($data['dinner_seats']) * $dinner_rate[$price_category];
+	$data['total'] += intval($data['dinner_seats']) * $dinner_rate[$price_category];
 
 	// First, add the info to a CSV file here on the server
 	$csv = new CSVFile('../data/signups-jurix.txt');
@@ -170,6 +177,10 @@ if ($registration_form->submitted() && count($errors) == 0) {
 						<?= $registration_form->dinner_seats->render($errors) ?>
 						<p class="explanation">Number of seats to reserve for the dinner</p>
 						<?= $registration_form->dinner_wishes->render($errors) ?>
+						</div>
+
+						<div class="form-grouping">
+						<?= $registration_form->gdpr->render($errors) ?>
 						</div>
 	
 						<div class="form-controls">
