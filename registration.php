@@ -25,7 +25,7 @@ $registration_form->add(new FormRadioField('register_as', 'Registering as', $opt
 $registration_form->add(new FormTextField('affiliation', 'Affiliation'));
 $registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d each)', $dinner_rate[$price_category])));
 $registration_form->add(new FormNumberField('dinner_seats', 'Seats', array('value' => '1', 'min' => '1')));
-$registration_form->add(new FormTextArea('dinner_wishes', 'Dietary wishes'));
+$registration_form->add(new FormTextArea('dinner_wishes', 'Dietary restrictions'));
 $registration_form->add(new FormCheckboxField('siks', 'I am a PhD student in the <a href="http://www.siks.nl/" target="_blank">SIKS research school</a>'));
 
 $errors = $registration_form->submitted() ? $registration_form->validate() : array();
