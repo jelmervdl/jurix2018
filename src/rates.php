@@ -27,14 +27,14 @@ $rates = array(
 		)
 	),
 	'workshops-only-student' => array(
-		'label' => 'Workshops and DC only (student)',
+		'label' => 'Workshops, hackathon and doctoral consortium only (student)',
 		'price' => array(
 			'early' => 50,
 			'late' => 60
 		)
 	),
 	'workshops-only-other' => array(
-		'label' => 'Workshops and DC only (others)',
+		'label' => 'Workshops, hackathon and doctoral consortium only (others)',
 		'price' => array(
 			'early' => 100,
 			'late' => 120
