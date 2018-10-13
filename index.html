@@ -93,6 +93,11 @@
 
 			function updatePosition() {
 				position = element.offsetTop;
+				updateMenu();
+			}
+
+			function updateMenu() {
+				element.classList.toggle('fixed', window.scrollY > position);
 			}
 
 			updatePosition();
@@ -101,9 +106,7 @@
 
 			window.addEventListener('resize', updatePosition);
 
-			window.addEventListener('scroll', function() {
-				element.classList.toggle('fixed', window.scrollY > position);
-			});
+			window.addEventListener('scroll', updateMenu);
 
 			document.addEventListener('click', function(e) {
 				if (e.target.nodeName == 'A') {
