@@ -187,7 +187,7 @@ html, body {
 .website-navigation li {
 	display: inline-block;
 	padding: 0 0.5em;
-	margin: 0 0.5em;
+	margin: 0 0.25em;
 	color: white;
 	border-bottom: 2px solid white;
 }
@@ -321,6 +321,7 @@ html, body {
 		padding-left: 0.5em;
 		display: block;
 		cursor: pointer;
+		text-align: left;
 	}
 
 	/* When the menu is open, overlay a 'dismissal' button on top of it */
