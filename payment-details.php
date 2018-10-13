@@ -40,6 +40,7 @@ $total = $rate['price'][$price_category] + $dinner * $dinner_rate[$price_categor
 				<li>
 					<a href="program.html">Program</a>
 				</li>
+				<li><a href="workshops.html">Workshops</a></li>
 				<li class="active"><a href="registration.php">Registration</a></li>
 				<li><a href="cfp.html">Calls</a></li>
 				<li><a href="committees.html">Committees</a></li>

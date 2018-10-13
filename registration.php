@@ -104,6 +104,7 @@ if ($registration_form->submitted() && count($errors) == 0) {
 			<ul class="container">
 				<li><a href="index.html#home">Home</a></li>
 				<li><a href="program.html">Program</a></li>
+				<li><a href="workshops.html">Workshops</a></li>
 				<li class="active"><a href="registration.php">Registration</a></li>
 				<li><a href="cfp.html">Calls</a></li>
 				<li><a href="committees.html">Committees</a></li>
