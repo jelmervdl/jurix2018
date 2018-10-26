@@ -10,20 +10,29 @@ function get_mailer()
 	if (!is_readable('../data/smtp.php'))
 		throw new RuntimeException('File with SMTP settings is not accessible');
 
+	$defaults = array(
+		'host' => 'smtp.gmail.com',
+		'port' => 587,
+		'smtp_secure' => 'tls',
+		'smtp_auth' => true
+	);
+
 	$auth = include '../data/smtp.php';
 
 	if (!$auth)
 		throw new RuntimeException('Could not load the SMTP settings from the file');
 	
+	$auth = array_merge($defaults, $auth);
+
 	$mailer = new PHPMailer(true);
 
 	$mailer->SMTPDebug = 0;
 
 	$mailer->isSMTP();
-	$mailer->Host = 'smtp.gmail.com';
-	$mailer->Port = 587;
-	$mailer->SMTPSecure = 'tls';
-	$mailer->SMTPAuth = true;
+	$mailer->Host = $auth['host'];
+	$mailer->Port = $auth['port'];
+	$mailer->SMTPSecure = $auth['smtp_secure'];
+	$mailer->SMTPAuth = $auth['smtp_auth'];
 	$mailer->Username = $auth['username'];
 	$mailer->Password = $auth['password'];
 	
@@ -88,6 +97,10 @@ class Email
 				case 'BCC':
 					$bcc = parse_mail_address($value);
 					$mailer->addBCC($bcc['address'], $bcc['name']);
+					break;
+				case 'Reply-To':
+					$reply_to = parse_mail_address($value);
+					$mailer->addReplyTo($reply_to['address'], $reply_to['name']);
 					break;
 			}
 		}

@@ -1,5 +1,6 @@
 From: JURIX 2018 <noreply@ai.rug.nl>
 To: $first_name $last_name <$email>
+Reply-To: Sarah van Wouwe <s.k.van.wouwe@rug.nl>
 Subject: Registration JURIX 2018
 
 <html>
