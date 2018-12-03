@@ -1,6 +1,6 @@
 <?php
 
-$late = time() > mktime(0, 0, 0, 12, 2);
+$late = time() > mktime(0, 0, 0, 12, 4);
 
 $price_category = $late ? 'late' : 'early';
 
