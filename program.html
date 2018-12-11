@@ -77,23 +77,23 @@
 							<time datetime="2018-12-12T09:30+01:00">9:30</time>
 							<div class="workshop">
 								<span class="location">Room 1.12</span>
-								<h3>AICOL – Artificial Intelligence and the Complexity of Legal Systems</h3>
+								<h3><a href="workshops.html#aicol">AICOL – Artificial Intelligence and the Complexity of Legal Systems</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">Conference room</span>
-								<h3>TeReCom – Technologies for Regulatory Compliance</h3>
+								<h3><a href="workshops.html#terecom">TeReCom – Technologies for Regulatory Compliance</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">Room 1.04</span>
-								<h3>XAILA – EXplainable AI in Law</h3>
+								<h3><a href="workshops.html#xaila">XAILA – EXplainable AI in Law</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">W.F. Hermans room</span>
-								<h3>Legal Design as Academic Discipline</h3>
+								<h3><a href="workshops.html#legaldesign">Legal Design as Academic Discipline</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">Professors room</span>
-								<h3>Many Laws</h3>
+								<h3><a href="workshops.html#manylaws">Many Laws</a></h3>
 							</div>
 						</div>
 						<div class="row">
@@ -106,23 +106,23 @@
 							<time datetime="2018-12-12T14:00+01:00">14:00</time>
 							<div class="workshop">
 								<span class="location">Room 1.12</span>
-								<h3>AICOL – Artificial Intelligence and the Complexity of Legal Systems and Doctoral Consortium</h3>
+								<h3><a href="workshops.html#aicol">AICOL – Artificial Intelligence and the Complexity of Legal Systems</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">Conference room</span>
-								<h3>TeReCom – Technologies for Regulatory Compliance</h3>
+								<h3><a href="workshops.html#terecom">TeReCom – Technologies for Regulatory Compliance</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">Room 1.04</span>
-								<h3>XAILA – EXplainable AI in Law</h3>
+								<h3><a href="workshops.html#xaila">XAILA – EXplainable AI in Law</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">W.F. Hermans room</span>
-								<h3>Legal Design as Academic Discipline</h3>
+								<h3><a href="workshops.html#legaldesign">Legal Design as Academic Discipline</a></h3>
 							</div>
 							<div class="workshop">
 								<span class="location">Professors room</span>
-								<h3>CEILI – Legal Data Analysis</h3>
+								<h3><a href="workshops.html#lda2018">CEILI – Legal Data Analysis</a></h3>
 							</div>
 						</div>
 						<div class="row">
@@ -349,7 +349,7 @@
 							<span class="affinity">Delft University of Technology</span>
 						</header>
 						<h3 class="title">AI and Law: the need for Ethics by Design</h3>
-						<p>I will argue that responsible innovations in the field of AI and Law require methods, tools and conceptual frameworks that allow us to use moral values (e.g. regarding transparency, explainability, but also values implied by democracy, human rights, rule of law) as supra functional requirements for design. Research in applied ethics of technology has been conducted in the past decades that can be utilized to this end.<br /><br /><br /><br /></p>
+						<p>I will argue that responsible innovations in the field of AI and Law require methods, tools and conceptual frameworks that allow us to use moral values (e.g. regarding transparency, explainability, but also values implied by democracy, human rights, rule of law) as supra functional requirements for design. Research in applied ethics of technology has been conducted in the past decades that can be utilized to this end.</p>
 					</section>
 				</section>
 
@@ -623,9 +623,21 @@
 				paper.appendChild(link);
 			});
 
+			$('.schedule a[href^="workshops.html#"]', function(link) {
+				var url = link.href.match(/^(.+?workshops\.html)(#[a-z0-9_-]+)$/);
+				link.addEventListener('click', function(e) {
+					fetchSelector(url[1], url[2], function(el) {
+						popup(function(root) {
+							root.appendChild(el);
+						});
+					});
+					e.preventDefault();
+				});
+			});
+
 			// This adds the actual names to the schedule
 			$('.schedule a[href^="program.html#"]:empty', function(link) {
-				var url = link.href.match(/^(.+?program.html)(#[a-z0-9_-]+)$/);
+				var url = link.href.match(/^(.+?program\.html)(#[a-z0-9_-]+)$/);
 				$(url[2], function(programItem) {
 					// Move the speaker to a speaker span
 					link.appendChild($h('span', {className: 'speaker'}, (
