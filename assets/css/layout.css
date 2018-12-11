@@ -1273,6 +1273,10 @@ section.talk .speaker {
 	margin: 0 1em 0 0;
 }
 
+.popup-content .talk .affinity {
+	display: block;
+}
+
 @media (max-width: 700px) {
 	.popup .popup-window .popup-content {
 		overflow-y: scroll;
