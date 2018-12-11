@@ -827,6 +827,11 @@ footer a {
 	clear: both;
 }
 
+.short.talk .title::after {
+	content: ' (Short Paper)';
+	opacity: 0.6;
+}
+
 section.talk {
 	position: relative;
 	margin-bottom: 3em;
