@@ -827,6 +827,11 @@ footer a {
 	clear: both;
 }
 
+.short.talk .title::after {
+	content: ' (Short Paper)';
+	opacity: 0.6;
+}
+
 section.talk {
 	position: relative;
 	margin-bottom: 3em;
@@ -1271,6 +1276,10 @@ section.talk .speaker {
 
 .popup-content .meta-link {
 	margin: 0 1em 0 0;
+}
+
+.popup-content .talk .affinity {
+	display: block;
 }
 
 @media (max-width: 700px) {
