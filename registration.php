@@ -24,8 +24,8 @@ $registration_form->add(new FormTextField('country', 'Country', array('required'
 $registration_form->add(new FormRadioField('register_as', 'Registering as', $options, array('required' => true)));
 $registration_form->add(new FormTextField('affiliation', 'Affiliation'));
 $registration_form->add(new FormCheckboxField('dinner', sprintf('I want to join the conference dinner (&euro;&nbsp;%d each)', $dinner_rate[$price_category])));
-$registration_form->add(new FormNumberField('dinner_seats', 'Seats', array('value' => '1', 'min' => '1')));
-$registration_form->add(new FormTextArea('dinner_wishes', 'Dietary restrictions'));
+// $registration_form->add(new FormNumberField('dinner_seats', 'Seats', array('value' => '1', 'min' => '1')));
+// $registration_form->add(new FormTextArea('dinner_wishes', 'Dietary restrictions'));
 $registration_form->add(new FormCheckboxField('siks', 'I am a PhD student in the <a href="http://www.siks.nl/" target="_blank">SIKS research school</a>'));
 $registration_form->add(new FormCheckboxField('gdpr', 'I consent that the JURIX 2018 conference organisation records the above provided information for the purpose and duration of the conference organisation.', array('required' => true)));
 
@@ -170,14 +170,26 @@ if ($registration_form->submitted() && count($errors) == 0) {
 						<?= $registration_form->siks->render($errors) ?>
 						</div>
 
-						<div class="form-grouping">
-						<?= $registration_form->dinner->render($errors) ?>
-						</div>
+						<?php /*
+							<div class="form-grouping">
+							<?= $registration_form->dinner->render($errors) ?>
+							</div>
+						
+							<div class="form-grouping" data-toggle-with="#field-dinner">
+							<?= $registration_form->dinner_seats->render($errors) ?>
+							<p class="explanation">Number of seats to reserve for the dinner</p>
+							<?= $registration_form->dinner_wishes->render($errors) ?>
+							</div>
+						*/ ?>
 
-						<div class="form-grouping" data-toggle-with="#field-dinner">
-						<?= $registration_form->dinner_seats->render($errors) ?>
-						<p class="explanation">Number of seats to reserve for the dinner</p>
-						<?= $registration_form->dinner_wishes->render($errors) ?>
+						<div class="form-grouping">
+							<div class="form-group checkbox">
+								<label class="option">
+									<input type="checkbox" value="yes" name="dinner" id="field-dinner" disabled>
+								 	<span style="text-decoration: line-through">I want to join the conference dinner (€&nbsp;60 each)</span>
+								</label>
+							</div>
+							<p class="explanation">Unfortunately, there are no more dinner seats available</p>
 						</div>
 
 						<div class="form-grouping">
